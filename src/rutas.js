@@ -196,9 +196,11 @@ rutas.get("/admin", (req, res) => {
 //13 - Ruta que será cargada para destruir la sesión y redirigir a la página principal
 rutas.get("/logout", function (req, res) {
     //Destruye la sesión.
-    req.session.destroy(() => {
-        res.redirect("/"); // siempre se ejecutará después de que se destruya la sesión
-    });
+    // req.session.destroy(() => {
+    //   res.redirect('/') // siempre se ejecutará después de que se destruya la sesión
+    // })
+    req.session = null; // Borra la sesión
+    res.redirect("/"); // Redirige a la página principal
 });
 
 //14 - ruta para editar los registros
